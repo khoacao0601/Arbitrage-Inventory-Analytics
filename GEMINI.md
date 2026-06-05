@@ -35,6 +35,9 @@ This document serves as a long-term memory for the AI to remember rules, project
      1. Always ensure `"jest"` is explicitly added to the `"types"` array inside `tsconfig.spec.json` alongside or replacing `"jasmine"`.
      2. Ensure the test file ends with `.spec.ts` to be picked up by the Angular test builder configuration (`"include": ["src/**/*.spec.ts"]`).
      3. Restart the VSCode TypeScript Server (`Ctrl + Shift + P` -> `TypeScript: Restart TS Server`) so the editor instantly recognizes the updated configuration.
+5. **SonarQube Express Security Warning (typescript:S5689)**
+   - **Description:** SonarQube flags `const app = express();` with "This framework implicitly discloses version information by default". By default, Express sends the `X-Powered-By: Express` HTTP header, which exposes the technology stack to potential attackers.
+   - **Resolution:** Added `app.disable('x-powered-by');` immediately after initializing the Express app in `server.ts` to hide this header and improve security.
 
 ---
 *Note: The AI will continuously update this file whenever there are new learnings or configurations in the future.*
