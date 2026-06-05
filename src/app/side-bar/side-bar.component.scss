@@ -1,0 +1,73 @@
+/* Sidebar Logo Styling */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 1rem;
+  background-color: transparent;
+
+  /* PrimeNG Menu CSS Variables Override */
+  --p-menu-background: transparent;
+  --p-menu-border-color: transparent;
+  --p-menu-item-color: #94a3b8; /* Lighter slate gray for unselected items */
+  --p-menu-item-icon-color: #94a3b8;
+  --p-menu-item-padding: 0.75rem 1rem;
+  --p-menu-item-border-radius: 6px;
+  
+  --p-menu-item-focus-background: rgba(255, 255, 255, 0.05);
+  --p-menu-item-focus-color: #f8fafc;
+  
+  --p-menu-item-active-background: #1e293b;
+  --p-menu-item-active-color: #ffffff;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 1rem;
+}
+
+.logo-icon {
+  color: #f59e0b; /* Yellow/Orange color */
+  font-size: 1.25rem;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+/* Custom Sidebar Menu Styles (No ::ng-deep needed due to ViewEncapsulation.None) */
+app-side-bar {
+  .custom-sidebar-menu {
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+
+  .custom-sidebar-menu .p-menu-item-content {
+    margin: 0.25rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .custom-sidebar-menu .p-menu-item-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Active state styling targeting the class assigned via PrimeNG MenuItem property */
+  .custom-sidebar-menu .active-menuitem .p-menu-item-content {
+    background-color: #334155;
+  }
+
+  .custom-sidebar-menu .active-menuitem .p-menu-item-text,
+  .custom-sidebar-menu .active-menuitem .p-menu-item-icon {
+    color: #ffffff !important;
+  }
+}

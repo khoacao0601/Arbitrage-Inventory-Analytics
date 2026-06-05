@@ -1,0 +1,46 @@
+:host {
+  /* Xanh dương đậm đen (Dark Navy Blue) */
+  --p-menubar-background: transparent;
+  --p-menubar-border-color: transparent;
+  
+  /* Tăng chiều cao của Header bằng cách thêm khoảng đệm (Padding) trên dưới */
+  --p-menubar-padding: 1rem 1.5rem;
+  
+  /* Màu chữ mặc định cho các mục menu */
+  --p-menubar-item-color: #f8fafc;
+  
+  /* Màu nền và màu chữ khi di chuột vào (Hover/Focus) */
+  --p-menubar-item-focus-background: rgba(255, 255, 255, 0.1);
+  --p-menubar-item-focus-color: #ffffff;
+  
+  /* Màu nền và màu chữ khi click/active */
+  --p-menubar-item-active-background: rgba(255, 255, 255, 0.15);
+  --p-menubar-item-active-color: #ffffff;
+  
+  /* Background cho menu con thả xuống */
+  --p-menubar-submenu-background: #0f172a;
+}
+
+/* Các class giao diện bên trong Header */
+.header-logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-right: 2rem;
+  color: #ffffff;
+}
+
+.header-logo-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+.header-user-icon {
+  font-size: 1.5rem;
+}
