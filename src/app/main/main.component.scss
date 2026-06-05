@@ -1,0 +1,40 @@
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #020617; /* Very dark base shell (Slate-950) */
+  color: #ffffff;
+}
+
+.layout-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: transparent; /* Blends seamlessly with the shell */
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.layout-header {
+  background-color: transparent; /* Blends seamlessly with the shell */
+}
+
+/* The Main Content becomes a distinct floating "Card" */
+.layout-content {
+  flex: 1;
+  margin: 0 1.5rem 1.5rem 0; /* Creates the gap between the shell and the content card */
+  padding: 2.5rem;
+  background-color: #0f172a; /* Slate-900: Visibly distinct from the #020617 shell */
+  border-radius: 1.5rem; /* Large smooth rounded corners */
+  border: 1px solid #1e293b; /* Subtle outline */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25); /* Depth shadow */
+}
+
+.content-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
