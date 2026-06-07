@@ -1,0 +1,38 @@
+<p-table 
+    #dt1
+    [value]="products" 
+    stripedRows 
+    [tableStyle]="{'min-width': '50rem'}"
+    [paginator]="true"
+    [rows]="20"
+    [rowsPerPageOptions]="[20, 30, 50]"
+    [globalFilterFields]="['code', 'name', 'category', 'quantity']"
+>
+    <ng-template #caption>
+        <div class="flex">
+            <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+            <p-iconfield iconPosition="left" class="ml-auto">
+                <p-inputicon>
+                    <i class="pi pi-search"></i>
+                </p-inputicon>
+                <input pInputText type="text" [(ngModel)]="searchValue" (ngModelChange)="dt1.filterGlobal($event, 'contains')" placeholder="Search keyword" />
+            </p-iconfield>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-product>
+        <tr>
+            <td>{{product.code}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+    </ng-template>
+</p-table>
