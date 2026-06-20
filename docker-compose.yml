@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  angular-app:
+    image: warehouse-management-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    container_name: ware-house-app
+    restart: unless-stopped
