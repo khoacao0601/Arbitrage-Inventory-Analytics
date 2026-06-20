@@ -10,7 +10,7 @@
 >
     <ng-template #caption>
         <div class="flex">
-            <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+            <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" (keydown.enter)="clear(dt1)" />
             <p-iconfield iconPosition="left" class="ml-auto">
                 <p-inputicon>
                     <i class="pi pi-search"></i>
