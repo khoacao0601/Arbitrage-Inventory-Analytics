@@ -7,7 +7,7 @@ import { MenuItem } from 'primeng/api';
   imports: [MenuModule],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SideBarComponent implements OnInit {
   items: MenuItem[] | undefined;
@@ -16,21 +16,26 @@ export class SideBarComponent implements OnInit {
     this.items = [
       {
         label: 'Dashboard',
-        icon: 'pi pi-chart-bar'
+        icon: 'pi pi-chart-bar',
+        routerLink: ['/dashBoard']
       },
       {
-        label: 'Inventory Matrix',
+        label: 'Inventory',
         icon: 'pi pi-box',
-        styleClass: 'active-menuitem'
+        routerLink: ['/table']
       },
       {
-        label: 'Deal Analyzer',
-        icon: 'pi pi-table'
+        label: 'Picking Items',
+        icon: 'pi pi-cart-plus',
       },
       {
-        label: 'Settings & Automations',
-        icon: 'pi pi-cog'
-      }
+        label: 'Import items',
+        icon: 'pi pi-plus-circle',
+      },
+      {
+        label: 'Settings',
+        icon: 'pi pi-cog',
+      },
     ];
   }
 }

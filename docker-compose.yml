@@ -4,7 +4,7 @@ services:
   angular-app:
     image: warehouse-management-app
     build:
-      context: .
+      context: ./frontEnd
       dockerfile: Dockerfile
     ports:
       - "4000:4000"

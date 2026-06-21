@@ -62,12 +62,11 @@ app-side-bar {
   }
 
   /* Active state styling targeting the class assigned via PrimeNG MenuItem property */
-  .custom-sidebar-menu .active-menuitem .p-menu-item-content {
+  .custom-sidebar-menu .p-menu-item-content:has(.p-menu-item-link-active) {
     background-color: #334155;
   }
-
-  .custom-sidebar-menu .active-menuitem .p-menu-item-text,
-  .custom-sidebar-menu .active-menuitem .p-menu-item-icon {
+  .custom-sidebar-menu .p-menu-item-link-active .p-menu-item-text,
+  .custom-sidebar-menu .p-menu-item-link-active .p-menu-item-icon {
     color: #ffffff !important;
   }
 }

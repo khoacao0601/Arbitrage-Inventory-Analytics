@@ -1,59 +1,57 @@
-# PraticeAngular
+# Arbitrage & Inventory Analytics (Monorepo)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+This project is structured as a Monorepo containing a decoupled Frontend (Angular SSR) and Backend (Node.js Express API).
 
-## Development server
+## 📂 Project Structure
 
-To start a local development server, run:
-
-```bash
-ng serve
+```text
+arbitrage-inventory-analytics/
+├── frontEnd/       # Angular SSR application (UI & Client-side logic)
+├── backend/        # Node.js Express API (Business logic & Database access)
+├── shared/         # Shared TypeScript interfaces and utilities (Future use)
+├── GEMINI.md       # AI Long-term memory and project rules
+├── docker-compose.yml # Orchestrates Docker containers for both services
+└── package.json    # Root configuration for running concurrent scripts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Getting Started
 
-## Code scaffolding
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Installation
+Since this is a monorepo, you need to install dependencies for the root, frontend, and backend.
 
-```bash
-ng generate component component-name
-```
+1. **Install Root Dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Install Frontend Dependencies:**
+   ```bash
+   cd frontEnd
+   npm install
+   cd ..
+   ```
+3. **Install Backend Dependencies:**
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Running the Application Locally (Development)
+To start both the Frontend and Backend simultaneously with a single command, run this at the **root** of the project:
 
 ```bash
-ng e2e
+npm run dev
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- **Frontend** will be available at: `http://localhost:4000`
+- **Backend API** will be available at: `http://localhost:3000`
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🐳 Docker Deployment
+To build and run the entire stack using Docker:
+```bash
+docker-compose up --build -d
+```
