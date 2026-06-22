@@ -41,5 +41,12 @@ This document serves as a long-term memory for the AI to remember rules, project
    - **Description:** SonarQube flags `const app = express();` with "This framework implicitly discloses version information by default". By default, Express sends the `X-Powered-By: Express` HTTP header, which exposes the technology stack to potential attackers.
    - **Resolution:** Added `app.disable('x-powered-by');` immediately after initializing the Express app in `server.ts` to hide this header and improve security.
 
+6. **Mixing CommonJS and ES Modules in TypeScript**
+   - **Description:** Using `require()` or `exports =` in a TypeScript project configured for ES Modules leads to undefined exports, runtime errors like `pool.query is not a function`, and `TypeError: argument handler must be a function`.
+   - **Resolution:** Uniformly use modern ES6 syntax (`import { module } from 'path'` and `export const ...`) across all `.ts` files. Set `"verbatimModuleSyntax": false` in `tsconfig.json` if maintaining CommonJS output in `package.json`.
+7. **PostgreSQL Default Values (UUID and Timestamps)**
+   - **Description:** When inserting data without explicitly passing values for `id`, `created_at`, or `updated_at`, PostgreSQL will throw a `violates not-null constraint` error or insert `[null]` if default values aren't configured on the table schema.
+   - **Resolution:** Always ensure to set Default values via UI or SQL (`ALTER TABLE ... SET DEFAULT gen_random_uuid();` and `SET DEFAULT CURRENT_TIMESTAMP;`) for auto-generated columns.
+
 ---
 *Note: The AI will continuously update this file whenever there are new learnings or configurations in the future.*

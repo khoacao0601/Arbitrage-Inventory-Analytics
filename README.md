@@ -40,6 +40,16 @@ Since this is a monorepo, you need to install dependencies for the root, fronten
    cd ..
    ```
 
+### Environment Variables
+For the Backend, you need a PostgreSQL database. Create a `.env` file in the `backend/` directory:
+```env
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=your_database_name
+```
+
 ### Running the Application Locally (Development)
 To start both the Frontend and Backend simultaneously with a single command, run this at the **root** of the project:
 
