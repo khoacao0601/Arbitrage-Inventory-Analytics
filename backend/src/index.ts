@@ -3,12 +3,19 @@ import './config/database';
 import userRouter from './routes/user.route';
 import itemsRouter from './routes/items.route';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+// Request system read file .env and get login information
+dotenv.config();
 
 // Init create Express
 const app = express();
 const PORT = 3000;
 
-app.use(cors()); 
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:4200',
+    credentials: true
+})); 
 // Help App can read JSON data from client
 app.use(express.json());
 
