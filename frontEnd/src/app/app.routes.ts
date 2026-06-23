@@ -1,19 +1,17 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './features/main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
-import { TableComponent } from './table/table.component';
+import { TableComopnent } from './features/table/table.component';
 
 export const routes: Routes = [
   {
-    path: '', 
+    path: '',
     component: MainComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashBoard', component: DashboardComponent },
-      { path: 'table', component: TableComponent }
-    ]
-  }
+      { path: 'table', component: TableComopnent },
+    ],
+  },
 ];
-

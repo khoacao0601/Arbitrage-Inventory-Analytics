@@ -8,7 +8,7 @@ export const userService = {
 
     createUser: async (email: string, password_hash: string, full_name: string) => {
         // Validation email
-        if (!email || !email.includes('@')) {
+        if (!email?.includes('@')) {
             throw new Error('Email not legit!');
         }
         

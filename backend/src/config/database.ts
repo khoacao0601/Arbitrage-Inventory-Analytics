@@ -1,6 +1,7 @@
-const pg = require('pg');
+import pg from 'pg';
+import dotenv from 'dotenv';
+
 const { Pool } = pg;
-const dotenv = require('dotenv');
 
 // Request system read file .env and get login information
 dotenv.config();
