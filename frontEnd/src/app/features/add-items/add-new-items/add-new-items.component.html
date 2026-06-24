@@ -164,7 +164,13 @@
             <p-inputgroup-addon>
                 <i class="pi pi-box"></i>
             </p-inputgroup-addon>
-            <input pInputText [(ngModel)]="inventory_status" name="inventory_status" placeholder="Inventory Status" disabled/>
+            <input
+                id="itemStatus"
+                aria-label="inventory status" 
+                pInputText 
+                [(ngModel)]="inventory_status" name="inventory_status" 
+                placeholder="Inventory Status" 
+                disabled/>
         </p-inputgroup>
 
         <div class="flex flex-col gap-1 w-full">
