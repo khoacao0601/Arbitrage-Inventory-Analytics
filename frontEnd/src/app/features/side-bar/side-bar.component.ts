@@ -22,15 +22,17 @@ export class SideBarComponent implements OnInit {
       {
         label: 'Inventory',
         icon: 'pi pi-box',
-        routerLink: ['/table']
+        routerLink: ['/inventory']
       },
       {
         label: 'Picking Items',
         icon: 'pi pi-cart-plus',
+        routerLink: ['/picking']
       },
       {
         label: 'Import items',
         icon: 'pi pi-plus-circle',
+        routerLink: ['/addItems']
       },
       {
         label: 'Settings',

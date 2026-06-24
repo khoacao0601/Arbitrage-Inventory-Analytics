@@ -12,4 +12,8 @@ export class ItemsApiService {
     get<T>(path: string, params: HttpParams = new HttpParams()): Observable<T> {
         return this.http.get<T>(`${this.baseUrl}/${path}`, { params });
     }
+
+    post<T>(path: string, body: any, params: HttpParams = new HttpParams()): Observable<T> {
+        return this.http.post<T>(`${this.baseUrl}/${path}`, body, { params });
+    }
 }
