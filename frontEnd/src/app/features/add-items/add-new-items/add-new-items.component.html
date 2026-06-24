@@ -9,7 +9,8 @@
                     <i class="pi pi-barcode"></i>
                 </p-inputgroup-addon>
                 <input
-                    id="itemCode" 
+                    id="itemCode"
+                    aria-label="Code" 
                     pInputText 
                     [(ngModel)]="code" 
                     name="code"
@@ -34,6 +35,7 @@
                 </p-inputgroup-addon>
                 <input 
                     id="itemName"
+                    aria-label="name"
                     pInputText 
                     [(ngModel)]="name" 
                     placeholder="Name"
@@ -61,6 +63,7 @@
                 </p-inputgroup-addon>
                 <input 
                     id="itemDescription"
+                    aria-label="description"
                     pInputText 
                     [(ngModel)]="description" 
                     name="description" 
@@ -83,7 +86,8 @@
             <p-inputgroup class="w-full max-w-sm">
                 <p-inputgroup-addon>$</p-inputgroup-addon>
                 <p-inputnumber
-                    id="itemPrice" 
+                    id="itemPrice"
+                    aria-label="price" 
                     [(ngModel)]="price" 
                     name="price"
                     placeholder="Price"
@@ -110,7 +114,8 @@
                     <i class="pi pi-book"></i>
                 </p-inputgroup-addon>
                 <p-select
-                    id="itemCategory"  
+                    id="itemCategory"
+                    aria-label="category"  
                     [(ngModel)]="selectedCategory" 
                     name="selectedCategory"
                     [options]="category()" 
@@ -135,14 +140,15 @@
             <p-inputgroup class="w-full max-w-sm">
                 <p-inputgroup-addon>123</p-inputgroup-addon>
                 <p-inputnumber
-                id="itemQuantity"  
-                [(ngModel)]="quantity" 
-                name="quantity" 
-                placeholder="Quantity (can not be 0)" 
-                [min]="1"
-                required
-                #quantityCtrl="ngModel"
-                [class.p-invalid]="quantityCtrl.invalid && (quantityCtrl.dirty || quantityCtrl.touched || itemForm.submitted)"
+                    id="itemQuantity"
+                    aria-label="quantity"  
+                    [(ngModel)]="quantity" 
+                    name="quantity" 
+                    placeholder="Quantity (can not be 0)" 
+                    [min]="1"
+                    required
+                    #quantityCtrl="ngModel"
+                    [class.p-invalid]="quantityCtrl.invalid && (quantityCtrl.dirty || quantityCtrl.touched || itemForm.submitted)"
                 />
             </p-inputgroup>
             @if (quantityCtrl.invalid && (quantityCtrl.dirty || quantityCtrl.touched || itemForm.submitted)) {
@@ -167,7 +173,8 @@
                     <i class="pi pi-star-fill"></i>
                 </p-inputgroup-addon>
                 <p-select
-                    id="itemRating"   
+                    id="itemRating"
+                    aria-label="rating"   
                     [(ngModel)]="rating" 
                     name="rating"
                     [options]="rates()"  
