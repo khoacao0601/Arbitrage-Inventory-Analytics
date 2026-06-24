@@ -8,7 +8,8 @@
                 <p-inputgroup-addon>
                     <i class="pi pi-barcode"></i>
                 </p-inputgroup-addon>
-                <input 
+                <input
+                    id="itemCode" 
                     pInputText 
                     [(ngModel)]="code" 
                     name="code"
@@ -32,6 +33,7 @@
                     <i class="pi pi-pencil"></i>
                 </p-inputgroup-addon>
                 <input 
+                    id="itemName"
                     pInputText 
                     [(ngModel)]="name" 
                     placeholder="Name"
@@ -58,6 +60,7 @@
                     <i class="pi pi-pencil"></i>
                 </p-inputgroup-addon>
                 <input 
+                    id="itemDescription"
                     pInputText 
                     [(ngModel)]="description" 
                     name="description" 
@@ -79,7 +82,8 @@
         <div class="flex flex-col gap-1 w-full">
             <p-inputgroup class="w-full max-w-sm">
                 <p-inputgroup-addon>$</p-inputgroup-addon>
-                <p-inputnumber 
+                <p-inputnumber
+                    id="itemPrice" 
                     [(ngModel)]="price" 
                     name="price"
                     placeholder="Price"
@@ -105,7 +109,8 @@
                 <p-inputgroup-addon>
                     <i class="pi pi-book"></i>
                 </p-inputgroup-addon>
-                <p-select 
+                <p-select
+                    id="itemCategory"  
                     [(ngModel)]="selectedCategory" 
                     name="selectedCategory"
                     [options]="category()" 
@@ -129,7 +134,8 @@
         <div class="flex flex-col gap-1 w-full">
             <p-inputgroup class="w-full max-w-sm">
                 <p-inputgroup-addon>123</p-inputgroup-addon>
-                <p-inputnumber 
+                <p-inputnumber
+                id="itemQuantity"  
                 [(ngModel)]="quantity" 
                 name="quantity" 
                 placeholder="Quantity (can not be 0)" 
@@ -160,7 +166,8 @@
                 <p-inputgroup-addon>
                     <i class="pi pi-star-fill"></i>
                 </p-inputgroup-addon>
-                <p-select  
+                <p-select
+                    id="itemRating"   
                     [(ngModel)]="rating" 
                     name="rating"
                     [options]="rates()"  
