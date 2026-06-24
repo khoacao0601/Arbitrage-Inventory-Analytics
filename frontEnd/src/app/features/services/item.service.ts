@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ItemsApiService } from '../../core/services/items.service';// Import từ tầng core
+import { ItemsApiService } from '../../core/services/items.service';
 import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
@@ -20,6 +20,14 @@ export class ItemsService {
         return this.itemsAPIService.get<any>('items').pipe(
             tap(response => {
                 this.cachedItems = response.data;
+            })
+        );
+    }
+
+    addAnItem(body: any): Observable<any> {
+        return this.itemsAPIService.post<any>('items', body).pipe(
+            tap(response => {
+                this.cachedItems = null;
             })
         );
     }

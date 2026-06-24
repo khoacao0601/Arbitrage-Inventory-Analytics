@@ -1,0 +1,27 @@
+<div class="card grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    
+    <p-inputgroup class="w-full max-w-sm">
+        <p-inputgroup-addon>
+            <i class="pi pi-user"></i>
+        </p-inputgroup-addon>
+        <input pInputText [(ngModel)]="text1" placeholder="Code" />
+    </p-inputgroup>
+
+    <p-inputgroup class="w-full max-w-sm">
+        <p-inputgroup-addon>$</p-inputgroup-addon>
+        <p-inputnumber [(ngModel)]="number" placeholder="Quantity" />
+    </p-inputgroup>
+
+    <p-inputgroup class="w-full max-w-sm">
+        <p-inputgroup-addon>www</p-inputgroup-addon>
+        <input pInputText [(ngModel)]="text2" placeholder="Website" />
+    </p-inputgroup>
+
+    <p-inputgroup class="w-full max-w-sm">
+        <p-inputgroup-addon>
+            <i class="pi pi-map"></i>
+        </p-inputgroup-addon>
+        <p-select [(ngModel)]="selectedCity" [options]="cities()" optionLabel="name" placeholder="Category" />
+    </p-inputgroup>
+</div>

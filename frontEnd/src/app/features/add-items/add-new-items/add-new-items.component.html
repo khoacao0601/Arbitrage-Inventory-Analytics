@@ -1,0 +1,206 @@
+<form 
+    #itemForm="ngForm" 
+    (ngSubmit)="itemForm.valid && submit()" 
+    class="card grid grid-cols-1 md:grid-cols-2 gap-4 items-start"
+>
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>
+                    <i class="pi pi-barcode"></i>
+                </p-inputgroup-addon>
+                <input 
+                    pInputText 
+                    [(ngModel)]="code" 
+                    name="code"
+                    placeholder="Code"
+                    required 
+                    #codeCtrl="ngModel" 
+                    [class.p-invalid]="codeCtrl.invalid && (codeCtrl.dirty || codeCtrl.touched || itemForm.submitted)"/>
+            </p-inputgroup>
+            @if (codeCtrl.invalid && (codeCtrl.dirty || codeCtrl.touched || itemForm.submitted)) {
+                <p-message 
+                    severity="error" 
+                    variant="simple" 
+                    size="small"
+                >Code is Required</p-message>
+            }
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>
+                    <i class="pi pi-pencil"></i>
+                </p-inputgroup-addon>
+                <input 
+                    pInputText 
+                    [(ngModel)]="name" 
+                    placeholder="Name"
+                    name="name"  
+                    required 
+                    #nameCtrl="ngModel" 
+                    [class.p-invalid]="nameCtrl.invalid && (
+                        nameCtrl.dirty || nameCtrl.touched ||  itemForm.submitted
+                    )"
+                    />
+            </p-inputgroup>
+            @if (nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched || itemForm.submitted)) {
+                <p-message 
+                    severity="error" 
+                    variant="simple" 
+                    size="small"
+                >Name is Required</p-message>
+            }
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>
+                    <i class="pi pi-pencil"></i>
+                </p-inputgroup-addon>
+                <input 
+                    pInputText 
+                    [(ngModel)]="description" 
+                    name="description" 
+                    placeholder="Description"
+                    required 
+                    #descriptionCtrl="ngModel" 
+                    [class.p-invalid]="descriptionCtrl.invalid && (descriptionCtrl.dirty || descriptionCtrl.touched || itemForm.submitted)"
+                />
+            </p-inputgroup>
+            @if (descriptionCtrl.invalid && (descriptionCtrl.dirty || descriptionCtrl.touched || itemForm.submitted)) {
+                <p-message 
+                    severity="error" 
+                    variant="simple" 
+                    size="small"
+                >Description is Required</p-message>
+            }
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>$</p-inputgroup-addon>
+                <p-inputnumber 
+                    [(ngModel)]="price" 
+                    name="price"
+                    placeholder="Price"
+                    mode="currency" 
+                    currency="USD" 
+                    locale="en-US"
+                    required
+                    #priceCtrl="ngModel"
+                    [class.p-invalid]="priceCtrl.invalid && (priceCtrl.dirty || priceCtrl.touched || itemForm.submitted)"
+                />
+            </p-inputgroup>
+                @if (priceCtrl.invalid && (priceCtrl.dirty || priceCtrl.touched || itemForm.submitted)) {
+                    <p-message 
+                        severity="error" 
+                        variant="simple" 
+                        size="small"
+                    >Price is Required</p-message>
+                }
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>
+                    <i class="pi pi-book"></i>
+                </p-inputgroup-addon>
+                <p-select 
+                    [(ngModel)]="selectedCategory" 
+                    name="selectedCategory"
+                    [options]="category()" 
+                    optionLabel="name" 
+                    optionValue="value" 
+                    placeholder="Category" 
+                    required
+                    #categoryCtrl="ngModel"
+                    [class.p-invlaid]="categoryCtrl.invalid && (categoryCtrl.dirty || categoryCtrl.touched || itemForm.submitted)"
+                />
+            </p-inputgroup>
+            @if (categoryCtrl.invalid && (categoryCtrl.dirty || categoryCtrl.touched || itemForm.submitted)) {
+                    <p-message 
+                        severity="error" 
+                        variant="simple" 
+                        size="small"
+                    >Category is Required</p-message>
+            }
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>123</p-inputgroup-addon>
+                <p-inputnumber 
+                [(ngModel)]="quantity" 
+                name="quantity" 
+                placeholder="Quantity (can not be 0)" 
+                [min]="1"
+                required
+                #quantityCtrl="ngModel"
+                [class.p-invalid]="quantityCtrl.invalid && (quantityCtrl.dirty || quantityCtrl.touched || itemForm.submitted)"
+                />
+            </p-inputgroup>
+            @if (quantityCtrl.invalid && (quantityCtrl.dirty || quantityCtrl.touched || itemForm.submitted)) {
+                    <p-message 
+                        severity="error" 
+                        variant="simple" 
+                        size="small"
+                    >Quantity is Required</p-message>
+            }
+        </div>
+
+        <p-inputgroup class="w-full max-w-sm">
+            <p-inputgroup-addon>
+                <i class="pi pi-box"></i>
+            </p-inputgroup-addon>
+            <input pInputText [(ngModel)]="inventory_status" name="inventory_status" placeholder="Inventory Status" disabled/>
+        </p-inputgroup>
+
+        <div class="flex flex-col gap-1 w-full">
+            <p-inputgroup class="w-full max-w-sm">
+                <p-inputgroup-addon>
+                    <i class="pi pi-star-fill"></i>
+                </p-inputgroup-addon>
+                <p-select  
+                    [(ngModel)]="rating" 
+                    name="rating"
+                    [options]="rates()"  
+                    optionLabel="name" 
+                    optionValue="value" 
+                    placeholder="Rating" 
+                    required
+                    #rateCtrl="ngModel"
+                    [class.p-invalid]="rateCtrl.invalid && (rateCtrl.dirty || rateCtrl.touched || itemForm.submitted)"
+                />
+            </p-inputgroup>
+            @if (rateCtrl.invalid && (rateCtrl.dirty || rateCtrl.touched || itemForm.submitted)) {
+                    <p-message 
+                        severity="error" 
+                        variant="simple" 
+                        size="small"
+                    >Rate is Required</p-message>
+            }
+        </div>
+
+        <div class="p-8 card flex">
+            <button pButton type="submit">
+                <i class="pi pi-check" pButtonIcon></i>
+                <span pButtonLabel>Add</span>
+            </button>
+        </div>
+
+
+        <div class="card flex justify-center">
+            <p-dialog 
+                header="Notice" 
+                [(visible)]="visible" 
+                [modal]="true" 
+                [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+                [style]="{ width: '50vw' }" 
+                [draggable]="false" 
+                [resizable]="false"
+            >
+                <p>{{ apiWarningMessage }}</p>
+                <p-button label="Ok" (onClick)="closedModal()"/>
+            </p-dialog>
+        </div>
+</form>
