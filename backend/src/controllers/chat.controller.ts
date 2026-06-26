@@ -42,11 +42,10 @@ export const streamChat = async (req: Request, res: Response) => {
 
     } catch (error) {
         console.error("Error stream chat:", error);
-        if (!res.headersSent) {
-            res.status(500).json({ error: "Failed to generate AI response" });
-        } else {
+        if (res.headersSent) {
             res.end();
+        } else {
+            res.status(500).json({ error: "Failed to generate AI response" });
         }
     }
-}
-
+};

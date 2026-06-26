@@ -20,7 +20,8 @@
     </div>
 
     <div style="display: flex; gap: 10px;">
-        <input #chatInput type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" 
+        <label for="chatInput" style="display: none;">Ask AI</label>
+        <input id="chatInput" #chatInput type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" 
             placeholder="Ask AI..." 
             [disabled]="isLoading"
             style="color: #333333; flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />

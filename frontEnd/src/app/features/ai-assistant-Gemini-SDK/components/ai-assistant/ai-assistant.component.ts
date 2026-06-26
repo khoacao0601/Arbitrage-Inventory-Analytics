@@ -24,12 +24,14 @@ export class AiAssistantComponent {
   @ViewChild('scrollContainer') private readonly scrollContainer!: ElementRef;
   @ViewChild('chatInput') private readonly chatInput!: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private readonly cdr: ChangeDetectorRef) {}
 
   private scrollToBottom(): void {
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
-    } catch (err) { }
+    } catch (err) {
+      console.error('Failed to scroll chat container:', err);
+    }
   }
 
   async sendMessage() {
@@ -75,15 +77,20 @@ export class AiAssistantComponent {
           const chunkText = decoder.decode(value, { stream: true });
           
           // 6. Add word to last message of AI (Affect typing)
-          const lastMessageIndex = this.messages.length - 1;
-          this.messages[lastMessageIndex].content += chunkText;
+          const lastMessage = this.messages.at(-1);
+          if (lastMessage) {
+            lastMessage.content += chunkText;
+          }
 
           this.cdr.detectChanges();
           this.scrollToBottom();
         }
     } catch (error) {
         console.error("Error connection to AI:", error);
-        this.messages[this.messages.length - 1].content = "Sorry, bad connection to AI Server.";
+        const lastMessage = this.messages.at(-1);
+        if (lastMessage) {
+          lastMessage.content = "Sorry, bad connection to AI Server.";
+        }
     } finally {
         this.isLoading = false;
         setTimeout(() => this.chatInput.nativeElement.focus(), 0)
