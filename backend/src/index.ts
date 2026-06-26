@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import './config/database'; 
 import userRouter from './routes/user.route';
 import itemsRouter from './routes/items.route';
+import chatRouter  from './routes/chat.route';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -18,6 +19,9 @@ app.use(cors({
 })); 
 // Help App can read JSON data from client
 app.use(express.json());
+
+//Antigravity SDK /api/chat
+app.use('/api/chat', chatRouter);
 
 // Users
 app.use('/api/users', userRouter);

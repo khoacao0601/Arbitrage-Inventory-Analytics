@@ -34,6 +34,11 @@ export class SideBarComponent implements OnInit {
         icon: 'pi pi-plus-circle',
         routerLink: ['/addItems']
       },
+        {
+        label: 'AI support',
+        icon: 'pi pi-microchip-ai',
+        routerLink: ['/AIsupport']
+      },
       {
         label: 'Settings',
         icon: 'pi pi-cog',
