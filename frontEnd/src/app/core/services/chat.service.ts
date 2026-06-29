@@ -1,5 +1,4 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,10 +6,34 @@ import { Observable } from 'rxjs';
 })
 
 export class AIChatAssistant {
-    private readonly http = inject(HttpClient);
     private readonly baseUrl = 'http://localhost:3000/api/chat';
 
-    get<T>(path: string, params: HttpParams = new HttpParams()): Observable<T> {
-        return this.http.get<T>(`${this.baseUrl}/${path}`, { params });
+    streamChat(path: string, bodyData: any): Observable<string> {
+        return new Observable<string>((observer) => {
+        fetch(`${this.baseUrl}/${path}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bodyData)
+        })
+        .then(async (response) => {
+            if (!response.body) {
+            observer.error(new Error("No response body"));
+            return;
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder('utf-8');
+
+            while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunkText = decoder.decode(value, { stream: true });
+            observer.next(chunkText); // Bắn từng từ về phía Component qua hàm next()
+            }
+            observer.complete(); // Xong hoàn toàn
+        })
+        .catch((err) => observer.error(err));
+        });
     }
 }
