@@ -31,7 +31,7 @@ export class AiAssistantComponent {
 
   private readonly chatService = inject(AIChatAssistantService);
 
-  // 1. Dùng getter để lấy mảng messages trực tiếp từ Service (Cache)
+  // 1. Using getter to get array messages directly from Service (Cache)
   get messages(): ChatMessage[] {
     return this.chatService.getHistory();
   }
@@ -54,13 +54,13 @@ export class AiAssistantComponent {
     this.userInput = '';
     this.isLoading = true;
 
-    // Service đã tự động push tin nhắn vào mảng rồi, nên ta không cần push thủ công ở đây nữa
+    // Service already push messages in to array, we don't need to do it here
     this.cdr.detectChanges();
     this.scrollToBottom();
 
     this.chatService.chatConversationStream(userMessage).subscribe({
       next: () => {
-        // Service đã tự động cộng dồn chữ vào chunkText rồi, component chỉ việc vẽ lại UI
+        // Service already concat letters to chunkText, component only re-render UI
         this.cdr.detectChanges();
         this.scrollToBottom();
       },
@@ -73,7 +73,7 @@ export class AiAssistantComponent {
         this.handleFinalize();
       },
       complete: () => {
-        // Khi AI hoàn thành stream toàn bộ văn bản
+        // when AI complete, stream all text
         this.handleFinalize();
       },
     });
