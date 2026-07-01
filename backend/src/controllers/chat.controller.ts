@@ -18,7 +18,7 @@ export const streamChat = async (req: Request, res: Response) => {
             return res.status(400).json({ error: "Message is required" });
         }
 
-        // 1. Prevent NodeJs to hold Chunk (Chỉ set header 1 lần duy nhất)
+        // 1. Prevent NodeJs to hold Chunk (set only one time)
         res.setHeader('Content-Type', 'text/plain; charset=utf-8');
         res.setHeader('Transfer-Encoding', 'chunked');
         res.setHeader('Cache-Control', 'no-cache');

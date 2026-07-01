@@ -44,7 +44,7 @@ export interface ChatMessage {
             }
             },
             error: () => {
-            // Xử lý báo lỗi vào thẳng cache nếu sập mạng
+            // Store Error warning to Cache if no internet
             const lastMsg = this.chatHistory.at(-1);
             if (lastMsg?.role === 'assistant' && !lastMsg.content) {
                 lastMsg.content = 'Sorry, bad connection to AI Server.';
